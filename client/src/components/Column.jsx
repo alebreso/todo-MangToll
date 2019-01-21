@@ -3,12 +3,14 @@ import Card from './Card';
 import '../App.css';
 import { DropTarget } from 'react-dnd';
 import { ItemTypes } from '../util/ItemTypes';
+import { connect } from 'react-redux';
+import CardContainer from './CardContainer';
 
 const colTarget = {
   drop(props,monitor,component) {
-    // console.log('props',props)
-    // console.log('monitor',monitor)
-    // console.log('component',component)
+    console.log('props',props)
+    console.log('monitor',monitor)
+    console.log('component',component)
   },
   // hover(props,monitor,component){
   //   console.log('HOVER');
@@ -20,7 +22,6 @@ const colTarget = {
   //   console.log('CANDROP');
   //   console.log('props',props)
   //   console.log('monitor',monitor)
-
   // }
 }
 
@@ -35,17 +36,18 @@ class Column extends Component {
 
   renderCards(card,i) {
     if(card.position===this.props.index){
-      return <Card card={card} key={`${card._id}`} deleteCard={this.props.deleteCard}/>;
+      return <Card card={card} key={`${card._id}`} />;
     }else{
-      return <div key={i+10}></div>;
+      return null;
     }
   }
 
   render() {
+    const { cardsPerCol } =this.props
     return this.props.connectDropTarget(
       <section className='col'>
         {
-          this.props.cards.map((card,i)=>this.renderCards(card,i))
+          cardsPerCol.map(card=> (<CardContainer card={card} key={card._id}/>))
         }
         {
           this.props.isOver && <div style={{position:'absolute', top:0, left:0, height:'100%', width:'100%', zindex:1, opacity: 0.5, backgroundColor:'yellow' }} />
@@ -55,5 +57,10 @@ class Column extends Component {
   }
 }
 
-export default DropTarget(ItemTypes.CARD, colTarget, collect)(Column)
+const mapStateToProps = (state) => ({
+  columns: state.colReducer,
+  cards: state.cardReducer
+})
+
+export default connect(mapStateToProps)(DropTarget(ItemTypes.CARD, colTarget, collect)(Column));
 

@@ -1,70 +1,102 @@
-* {
-  box-sizing: content-box;
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
   padding: 0;
   background-color: #d7d6d6;
-  position: relative;
 }
 
 .col-container {
   display: flex;
-  padding: 5px;
-  position: relative;
+  margin-bottom: 10px;
 }
 
 .col {
-  margin: 0 auto;
-  width:100%;
-  border: 2px solid #545454;
-  position: relative;
-  height: 100%;;
+  border: 1px solid #797979;
+  flex-grow: 1;
+  width: 100%;
+  margin: 1px;
+  text-align: center;
 }
 
 .card {
-  border: 0,5px black solid;
-  text-align: center;
-  vertical-align: middle;
-  display: inline-block;
-  margin: 0.5rem 0rem;
+  padding-top: 2.5px;
+  margin: 5px;
   position: relative;
-  box-shadow: 1px 1px 1px ;
-  width: 100%;
-  height: 100%;
+  border-radius: 5%;
+  background-color: #5ece7e;
+  box-shadow: 2px 2px 1px rgba(101, 100, 100, 0.379);
 }
 
 .card-title {
+  color:white;
+  flex-grow: 1;
   display: inline;
+  vertical-align: text-bottom;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .card-text{
+  border: 1px solid #e1e1e1;
   background-color: white;
-  height: 100%;
+  display: block;
+  border-radius: 0 0 5px 5px;
 }
 
 .card-button {
-  background-color: #d7d6d6;
-  border: 0,5px white solid;
-  border-radius: 30%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: red;
-  font-size: 8px;
-}
+  position: absolute ;
+  display: block;
+  top:5px;
+  right:5px;
+  color:white;
+  background-color: #5ece7e;
+  border: 0;
+  cursor: pointer;
+} 
 
 .addCard-container {
   width: min-content;
-  padding: 5px;
   position: relative;
   left: 30px; 
+  padding: 10px;
   background-color:white;
   box-shadow: 1px 1px 1px ;
+  border-radius: 5%;
 }
 
 .addCard-form {
   margin: 0 auto;
+  text-align: center;
+}
+
+.addCard-button {
+  background-color: #5ece7e;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 5px;
+  border: 0;
+  color: white
+}
+
+.tile-container{
+  position: relative;
+  width:100%;
+  font-size:0;
+  display: flex;
+  background-color: white;
+  box-shadow: 1px 2px 2px #797979
+}
+
+.tile{
+  margin-top: 5px;
+  font-size:12px; /* or whatever you want */
+  flex-grow: 6;
+  width: 15%;
+  min-height:22px;
+  border-bottom: 1px #BDBDBD solid;
+  display: inline-block;
   text-align: center;
 }

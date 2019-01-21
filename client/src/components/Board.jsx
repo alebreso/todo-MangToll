@@ -1,23 +1,37 @@
 import React, { Component } from 'react';
-import Column from './Column';
+import ColumnContainer from './ColumnContainer';
 
-export default class Board extends Component {
+class Board extends Component {
+  
   render() {
+    const { columns, cards } = this.props;
+
+    if(columns.loading === false && cards.loading === false){
+      return (
+        <div className="col-container">
+          {
+            columns.columns.map(col=> {
+              return <ColumnContainer 
+                name={col.name} 
+                position={col.position} 
+                key={`${col.name}-${col.position}`}
+              />
+            })
+          }
+        </div>
+      ) 
+    }
     return (
-      <div className="col-container">
-        {
-          this.props.col.map((c,i) => (
-            <Column 
-              col={c} 
-              index={i}
-              cards={this.props.cards} key={i}
-              deleteCard={this.props.deleteCard}
-            />
-          ))
-        }
-      </div>
-    )  
+      <div></div>
+    )
+     
   }
 }
 
+// const mapStateToProps = (state) => ({
+//   cards: state.cardReducer.cards,
+//   columns: state.colReducer.columns,
+// })
 
+//export default connect(mapStateToProps,)(Board)
+export default Board

@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Card = require("../models/Card");
+const Column = require('../models/Column')
 
 //GET to / => gets all cards
 router.get("/", (req, res, next) => {
@@ -9,9 +10,18 @@ router.get("/", (req, res, next) => {
       res.json(cards);
     })
     .catch(err => console.log(err));
-});
+})
 
-//POST to / => create 1 card
+// GET to /:id => gets 1 card by id
+router.get("/:id", (req, res) => {
+  Card.findById(req.params.id)
+  .then(card => {
+    res.json(card);
+  })
+    .catch(err => res.status(404).json({success:false}))
+})
+
+//POST to / => creates 1 card
 router.post("/", (req, res, next) => {
   const newCard = new Card({
     title: req.body.title,

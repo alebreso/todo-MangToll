@@ -5,16 +5,21 @@ const CardSchema = new Schema(
   {
     title: {
       type: String,
-      required:true
+      required: true
     },
     text: {
       type: String,
-      required:true
+      required: true
     },
     position: {
       type: Number,
       required: true
     }
+    // position: {
+    //   type: Schema.Types.ObjectId,
+    //   ref: 'column',
+    //   required: true
+    // }
   },
   { timestamps: true }
 )

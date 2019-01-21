@@ -1,20 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addCard } from '../actions/cardActions';
+import { addCard, getCards } from '../actions/cardActions';
 
 class AddCardComponent extends Component {
   state={
     title: '',
     text: '',
     position: 0
-    // isVisibible: false,
   }
-
-  // toggle = () => {
-  //   this.setState({
-  //     isVisibible: !this.state.isVisibible
-  //   })
-  // }
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -26,10 +19,11 @@ class AddCardComponent extends Component {
     }
     this.props.addCard(newCard);
     this.setState({
-      title:'',
-      text:'',
+      title: '',
+      text: '',
       position: 0
     })
+    this.props.getCards();
   }
 
 	handleChange = (event) => {
@@ -37,46 +31,59 @@ class AddCardComponent extends Component {
 		this.setState({
 			[name]: value
 		});
-	};
+  };
+  
+  selectRender = () => {
+    return (
+      <select onChange={this.handleChange} name="position">
+      {
+        this.props.columns.map(col => (<option key={col} value={col.position}>{col}</option>))
+      }
+      </select>
+    )
+  }
 
   render() {
+    if(!this.props.cols.columns) return 'Loading';
     return (
       <div className="addCard-container">
-        {/* <button type='button' onClick={this.toggle}>ADD CARD</button> */}
-      <form className="addCard-form" onSubmit={this.handleSubmit}>
-        <input 
-          type='text'
-          id='title'
-          name="title"
-          placeholder="Project Title"
-          onChange={this.handleChange}
-          required>
-        </input>
-        <select onChange={this.handleChange} name="position">
-          {
-            this.props.columns.map((col,i) => (<option key={col} value={i}>{col}</option>))
-          }
-        </select>   
-        <textarea
-							id="text"
-							rows="4"
-							cols="18"
-							name="text"
-							placeholder="Project description"
-							onChange={this.handleChange}
-							required
-						/>
-        {/* <input type='text' name="text" placeholder="TEXT HERE" onChange={this.handleChange}></input> */}
-        <button type='submit'>ADD CARD</button>
-      </form>
+        <form className="addCard-form" onSubmit={this.handleSubmit}>
+          <input 
+            type='text'
+            id='title'
+            name="title"
+            placeholder="Project Title"
+            onChange={this.handleChange}
+            value={this.state.title}
+            required>
+          </input>
+          <select onChange={this.handleChange} name="position">
+            <option key='position-0' value={0}>flowchart</option>
+            <option key='position-1' value={1}>wireframe</option>
+            <option key='position-2' value={2}>prototype</option>
+            <option key='position-3' value={3}>development</option>
+            <option key='position-4' value={4}>test</option>
+            <option key='position-5' value={5}>launch</option>
+          </select>   
+          <textarea
+                id="text"
+                rows="4"
+                cols="18"
+                name="text"
+                placeholder="Project description"
+                onChange={this.handleChange}
+                value={this.state.text}
+                required
+              />
+        </form>
+        <button type="submit" onClick={this.handleSubmit} className="addCard-button">Add Project +</button>
       </div>
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-  cards: state.board.cards,
-  columns: state.board.columns,
+  
 })
 
-export default connect(mapStateToProps, { addCard })(AddCardComponent);
+export default connect(mapStateToProps, { addCard, getCards })(AddCardComponent);

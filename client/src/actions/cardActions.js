@@ -32,7 +32,6 @@ export const deleteCard = (id) => dispatch => {
   )
 }
 
-
 export const setCardsLoading = () => {
   return {
     type: CARDS_LOADING,
