@@ -31,6 +31,16 @@ router.post("/", (req, res, next) => {
   newCard.save().then(card => res.json(card));
 });
 
+router.put('/change-position/:id', (req,res)=>{
+  Card.findById(req.params.id)
+    .then(card => {
+      if(req.body.position) {card.position = req.body.position}
+      card.save()
+        .then(card => console.log('card updated. ' + card))
+    })
+    .catch(err => console.log(err))
+})
+
 //DELETE to /:id => delete 1 card
 router.delete("/:id", (req, res, next) => {
   Card.findById(req.params.id)
