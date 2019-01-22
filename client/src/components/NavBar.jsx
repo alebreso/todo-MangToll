@@ -4,13 +4,13 @@ export default class NavBar extends Component {
   render() {
     return (
       <div className="navbar">
-        <div class="tile-container">
-          <div class="tile">FLOWCHART</div>
-          <div class="tile">WIREFRAME</div>  
-          <div class="tile">PROTOTYPE</div>  
-          <div class="tile">DEVELOPMENT</div>  
-          <div class="tile">TEST</div>        
-          <div class="tile">LAUNCH</div>        
+        <div className="tile-container">
+          <div className="tile">FLOWCHART</div>
+          <div className="tile">WIREFRAME</div>  
+          <div className="tile">PROTOTYPE</div>  
+          <div className="tile">DEVELOPMENT</div>  
+          <div className="tile">TEST</div>        
+          <div className="tile">LAUNCH</div>        
         </div>
       </div>
     )
