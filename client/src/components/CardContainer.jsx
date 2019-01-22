@@ -7,14 +7,14 @@ import Card from './Card';
 
 const cardSource = {
   beginDrag(card){
-    console.log(card.card)
-    return card.card;
+    //console.log(card.card)
+    return card;
     //return {cardId:card.card.id}
   },
   endDrag(props,monitor,card){
-    console.log('props',props);
-    console.log('monitor',monitor);
-    console.log('card',card);
+    // console.log('props',props);
+    // console.log('monitor',monitor);
+    // console.log('card',card);
   }
 
 }
@@ -34,14 +34,22 @@ class CardContainer extends Component {
   }
 
   render() {
+    const {
+      isDragging,
+      connectDragSource,
+      name,
+    } = this.props
     const { card } = this.props
-    return this.props.connectDragSource(
+    console.log(name)
+    return connectDragSource
+    ? connectDragSource(
       <div>
         {
           <Card card={card} handleDelete={this.handleDelete}/>
         }
       </div>
     )
+    : null
   }
 }
 
@@ -50,4 +58,25 @@ const mapStateToProps = (state) => ({
   columns: state.colReducer.columns,
 })
 
-export default connect(mapStateToProps, {deleteCard, getCards})(DragSource(ItemTypes.CARD, cardSource, collect)(CardContainer));
+export default DragSource(
+  ItemTypes.CARD,
+  {
+    beginDrag(props) {
+      return {
+        name: props.name,
+      }
+    },
+    endDrag(props, monitor) {
+      const item = monitor.getItem()
+      const dropResult = monitor.getDropResult()
+      if(dropResult) {
+        alert(`${item.name} into ${dropResult.name}`)
+      }
+    },
+  },
+  (connect, monitor) => ({
+    connectDragSource: connect.dragSource(),
+    isDragging: monitor.isDragging(),
+  }),
+)(connect(mapStateToProps, 
+  {deleteCard, getCards})(CardContainer))

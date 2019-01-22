@@ -11,7 +11,6 @@ class AddCardComponent extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state)
     const newCard = {
       title: this.state.title,
       text: this.state.text,
@@ -23,6 +22,10 @@ class AddCardComponent extends Component {
       text: '',
       position: 0
     })
+    this.renderCards();
+  }
+
+  renderCards() {
     this.props.getCards();
   }
 
