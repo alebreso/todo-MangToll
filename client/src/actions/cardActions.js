@@ -29,11 +29,10 @@ export const addCard = (card) => dispatch => {
 export const changePosition = (cardId,newPosition) => dispatch => {
   axios
     .put(`http://localhost:4000/change-position/${cardId}`,newPosition)
-    .then(res => console.log(res))
-    // .then(res => dispatch({
-    //   type: CHANGE_POSITION,
-    //   payload: res.data
-    // }))
+    .then(res => dispatch({
+      type: CHANGE_POSITION,
+      payload: res.data
+    }))
 }
 
 export const deleteCard = (id) => dispatch => {
