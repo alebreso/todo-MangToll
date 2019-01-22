@@ -59,12 +59,13 @@ body {
 
 .addCard-container {
   width: min-content;
-  position: relative;
+  position: absolute;
   left: 30px; 
   padding: 10px;
   background-color:white;
   box-shadow: 1px 1px 1px ;
   border-radius: 5%;
+  bottom: 10px;
 }
 
 .addCard-form {
