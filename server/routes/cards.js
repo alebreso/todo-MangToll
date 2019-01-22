@@ -32,14 +32,11 @@ router.post("/", (req, res, next) => {
 });
 
 router.put('/change-position/:id', (req,res)=>{
-  Card.findById(req.params.id)
+  Card.findByIdAndUpdate(req.params.id)
     .then(card => {
-      if(req.body.position) {card.position = req.body.position}
+      card.position=req.body.position
       card.save()
-        .then(
-          Card.find()
-          .then(cards => res.json(cards))
-        )
+        .then(card => res.json(card))
     })
     .catch(err => console.log(err))
 })

@@ -33,6 +33,10 @@ class CardContainer extends Component {
     this.props.getCards();
   }
 
+  handleChangePosition = (cardId, newPosition) => {
+    this.props.changePosition(cardId,newPosition)
+  }
+
   render() {
     const {
       isDragging,
@@ -48,7 +52,7 @@ class CardContainer extends Component {
             handleDelete={this.handleDelete} 
             isDragging={isDragging} 
             name={name} 
-            changePosition={this.props.changePosition}/>
+            changePosition={this.handleChangePosition}/>
         }
       </div>
     )
@@ -68,17 +72,6 @@ export default DragSource(
       return {
         id: props.id,
         name: props.name
-      }
-    },
-    endDrag(props, monitor) {
-      if(!monitor.didDrop()) return;
-      const item = monitor.getItem()
-      console.log(item)
-      const dropResult = monitor.getDropResult()
-      console.log(dropResult)
-      //call api to change position in db
-      if(dropResult) {
-        alert(`${item.name} into ${dropResult.name}`)
       }
     },
   },

@@ -7,11 +7,8 @@ import CardContainer from './CardContainer';
 
 const spec = {
   drop(props,monitor,component) {
-    console.log('props',props.pos)
-    // console.log('monitor',monitor)
-    // console.log('component',component)
-    return {position:props.pos}
- },
+    return {}
+  },
 }
 
 const style = {

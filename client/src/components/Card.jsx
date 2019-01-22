@@ -6,15 +6,18 @@ const cardSource = {
   beginDrag(props){
     const cardId = { id: props.card._id };
     const cardPos = { pos: props.card.position }
-    console.log(cardId)
-    console.log(cardPos)
-    return {id: cardId, pos:cardPos};    //return {cardId:card.card.id}
+    // console.log(cardId)
+    // console.log(cardPos)
+    return {id: cardId, pos:cardPos};
   },
   endDrag(props,monitor,card){
     const item = monitor.getItem();
     const dropResult = monitor.getDropResult()
-    if(item.pos.pos !== dropResult) {
-      props.changePosition(item.id,dropResult);
+    if(dropResult){
+      if(item.pos.pos !== dropResult) {
+        console.log(props)
+        return props.changePosition(item.id,dropResult);
+      }
     }
   }
 
