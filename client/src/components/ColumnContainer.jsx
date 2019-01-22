@@ -15,7 +15,7 @@ export class ColumnContainer extends Component {
   render() {
     const cardsPerCol = this.findCardsPerCol();
     return (
-      <Column key={this.props.key} cardsPerCol={cardsPerCol} />
+      <Column key={this.props.key} cardsPerCol={cardsPerCol} pos={this.props.position}/>
     )
   }
 }

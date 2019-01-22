@@ -6,10 +6,10 @@ import { connect } from 'react-redux';
 import Card from './Card';
 
 const cardSource = {
-  beginDrag(card){
+  beginDrag(props){
     //console.log(card.card)
-    return card;
-    //return {cardId:card.card.id}
+    const item = { id: props.id };
+    return item;    //return {cardId:card.card.id}
   },
   endDrag(props,monitor,card){
     // console.log('props',props);
@@ -40,12 +40,11 @@ class CardContainer extends Component {
       name,
     } = this.props
     const { card } = this.props
-    console.log(name)
     return connectDragSource
     ? connectDragSource(
       <div>
         {
-          <Card card={card} handleDelete={this.handleDelete}/>
+          <Card card={card} handleDelete={this.handleDelete} isDragging={isDragging} name={name}/>
         }
       </div>
     )
@@ -63,12 +62,17 @@ export default DragSource(
   {
     beginDrag(props) {
       return {
-        name: props.name,
+        id: props.id,
+        name: props.name
       }
     },
     endDrag(props, monitor) {
+      if(!monitor.didDrop()) return;
       const item = monitor.getItem()
+      console.log(item)
       const dropResult = monitor.getDropResult()
+      console.log(dropResult)
+      //call api to change position in db
       if(dropResult) {
         alert(`${item.name} into ${dropResult.name}`)
       }
