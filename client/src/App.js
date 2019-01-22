@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { DragDropContext, DragDropContextProvider } from 'react-dnd';
+import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { connect } from 'react-redux';
 import { getCards} from './actions/cardActions';
@@ -18,7 +18,6 @@ class App extends Component {
 
   render() {
     return (
-      <DragDropContextProvider backend={HTML5Backend}>
       <React.Fragment>
         <header>
           <NavBar />
@@ -28,8 +27,7 @@ class App extends Component {
           <AddCardComponent cols={this.props.columns}/>
         </main>
       </React.Fragment>
-      </DragDropContextProvider>
-      );
+    );
   }
 }
 

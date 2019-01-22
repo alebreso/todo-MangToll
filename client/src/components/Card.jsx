@@ -8,9 +8,14 @@ const cardSource = {
     const cardPos = { pos: props.card.position }
     console.log(cardId)
     console.log(cardPos)
-    return {id: props.card.id, pos:props.card.position};    //return {cardId:card.card.id}
+    return {id: cardId, pos:cardPos};    //return {cardId:card.card.id}
   },
   endDrag(props,monitor,card){
+    const item = monitor.getItem();
+    const dropResult = monitor.getDropResult()
+    if(item.pos.pos !== dropResult) {
+      props.changePosition(item.id,dropResult);
+    }
   }
 
 }

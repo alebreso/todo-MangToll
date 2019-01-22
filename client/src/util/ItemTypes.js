@@ -1,4 +1,3 @@
 export const ItemTypes = {
-  CARD:'card',
-  COL:'col'
+  CARD:'card'
 }

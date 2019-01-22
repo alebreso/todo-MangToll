@@ -1,4 +1,4 @@
-import { GET_CARDS, ADD_CARD, DELETE_CARD, CARDS_LOADING} from '../actions/types';
+import { GET_CARDS, ADD_CARD, DELETE_CARD, CARDS_LOADING, CHANGE_POSITION} from '../actions/types';
 
 const initialState = {}
 // const initialState = {
@@ -31,6 +31,11 @@ export default function(state = initialState, action) {
         ...state,
         cards: state.cards.filter(card => card.id !== action.payload)
       };
+    case CHANGE_POSITION:
+      return {
+        ...state,
+        cards: action.payload,
+      }
     case CARDS_LOADING:
       return {
         ...state,

@@ -36,7 +36,10 @@ router.put('/change-position/:id', (req,res)=>{
     .then(card => {
       if(req.body.position) {card.position = req.body.position}
       card.save()
-        .then(card => console.log('card updated. ' + card))
+        .then(
+          Card.find()
+          .then(cards => res.json(cards))
+        )
     })
     .catch(err => console.log(err))
 })
