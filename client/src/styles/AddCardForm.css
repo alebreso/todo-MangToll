@@ -1,0 +1,24 @@
+.addCard-container {
+  width: min-content;
+  position: absolute;
+  left: 30px; 
+  padding: 10px;
+  background-color:white;
+  box-shadow: 1px 1px 1px ;
+  border-radius: 5%;
+  bottom: 10px;
+}
+
+.addCard-form {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.addCard-button {
+  background-color: #5ece7e;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 5px;
+  border: 0;
+  color: white
+}

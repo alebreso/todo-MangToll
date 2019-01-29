@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addCard, getCards } from '../actions/cardActions';
+import { addCard, getCards } from '../actions/CardActions';
+import '../styles/AddCardForm.css'
 
-class AddCardComponent extends Component {
+class AddCardForm extends Component {
   state={
     title: '',
     text: '',
     position: 0
   }
-
+  
   handleSubmit = (e) => {
     e.preventDefault();
     const newCard = {
@@ -22,71 +23,66 @@ class AddCardComponent extends Component {
       text: '',
       position: 0
     })
-    this.renderCards();
+    //this.renderCards();
   }
 
   renderCards() {
     this.props.getCards();
   }
 
-	handleChange = (event) => {
-    const { name, value } = event.target;
-		this.setState({
-			[name]: value
-		});
-  };
-  
-  selectRender = () => {
-    return (
-      <select onChange={this.handleChange} name="position">
-      {
-        this.props.columns.map(col => (<option key={col} value={col.position}>{col}</option>))
-      }
-      </select>
-    )
+  handleChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value
+    })
   }
 
   render() {
-    if(!this.props.cols.columns) return 'Loading';
     return (
       <div className="addCard-container">
         <form className="addCard-form" onSubmit={this.handleSubmit}>
-          <input 
+          <input
             type='text'
             id='title'
-            name="title"
-            placeholder="Project Title"
+            name='title'
+            placeholder='Card Title'
             onChange={this.handleChange}
             value={this.state.title}
-            required>
-          </input>
-          <select onChange={this.handleChange} name="position">
+            required
+          />
+          <select onChange={this.handleChange} name='position'>
             <option key='position-0' value={0}>flowchart</option>
             <option key='position-1' value={1}>wireframe</option>
             <option key='position-2' value={2}>prototype</option>
             <option key='position-3' value={3}>development</option>
             <option key='position-4' value={4}>test</option>
             <option key='position-5' value={5}>launch</option>
-          </select>   
+          </select>
           <textarea
-                id="text"
-                rows="4"
-                cols="18"
-                name="text"
-                placeholder="Project description"
-                onChange={this.handleChange}
-                value={this.state.text}
-                required
-              />
+            id='text'
+            name='text'
+            rows='4'
+            cols='18'
+            placeholder='Project description'
+            onChange={this.handleChange}
+            value={this.state.text}
+            required
+          />
         </form>
-        <button type="submit" onClick={this.handleSubmit} className="addCard-button">Add Project +</button>
+        <button
+          type='submit'
+          onClick={this.handleSubmit}
+          className='addCard-button'
+        >
+          Add Project +
+        </button>
       </div>
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-  
+  cards: state.cardReducer.cards
 })
 
-export default connect(mapStateToProps, { addCard, getCards })(AddCardComponent);
+export default connect(mapStateToProps,{addCard,getCards})(AddCardForm)

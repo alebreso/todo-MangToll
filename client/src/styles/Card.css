@@ -1,0 +1,39 @@
+.card{
+  /* border: 1px dashed gray; */
+  /* padding: 0.5rem 1rem; */
+  margin: .5rem;
+  background-color: white;
+  cursor: move;
+  border-radius: 5%;
+  background-color: #5ece7e;
+  box-shadow: 2px 2px 1px rgba(101, 100, 100, 0.379);
+  position: relative;
+}
+
+.card-title {
+  color:white;
+  display: flex;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 3px;
+}
+
+.card-text{
+  border: 1px solid #e1e1e1;
+  background-color: white;
+  display: block;
+  width: 100%;
+  border-radius: 0 0 5px 5px;
+}
+
+.card-button {
+  position: absolute ;
+  display: flex;
+  color:white;
+  background-color: #5ece7e;
+  border: 0;
+  cursor: pointer;
+  border-radius: 50%;
+  top:0;
+  right:0;
+} 

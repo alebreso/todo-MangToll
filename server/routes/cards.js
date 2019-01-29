@@ -28,15 +28,20 @@ router.post("/", (req, res, next) => {
     text: req.body.text,
     position: req.body.position,
   });
-  newCard.save().then(card => res.json(card));
+  newCard.save().then(card => res.json(card)).catch(err=>console.log(err));
 });
 
-router.put('/change-position/:id', (req,res)=>{
-  Card.findByIdAndUpdate(req.params.id)
+router.put('/card/:cardId/position/:newPosition', (req,res)=>{
+  const {cardId,newPosition} = req.params;
+  console.log(cardId)
+  console.log(newPosition)
+  Card.findByIdAndUpdate(cardId)
     .then(card => {
-      card.position=req.body.position
+      card.position=newPosition;
       card.save()
-        .then(card => res.json(card))
+        .then(card => {
+          console.log(card)
+          res.json(card)})
     })
     .catch(err => console.log(err))
 })

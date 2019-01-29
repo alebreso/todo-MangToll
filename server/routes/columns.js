@@ -17,7 +17,7 @@ router.get("/col/:id", (req, res) => {
   .then(card => {
     res.json(card);
   })
-    .catch(err => res.status(404).json({success:false}))
+  .catch(err => res.status(404).json({success:false}))
 })
 
 //POST create a col into db
@@ -26,7 +26,7 @@ router.post("/add-col", (req, res, next) => {
     name: req.body.name,
     position: req.body.position,
   });
-  newCol.save().then(col => res.json(col));
+  newCol.save().then(col => res.json(col)).catch(err=>console.log(err));
 });
 
 module.exports = router;

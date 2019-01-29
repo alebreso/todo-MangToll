@@ -1,0 +1,18 @@
+.tile-container{
+  position: relative;
+  width:100%;
+  display: flex;
+  background-color: white;
+  box-shadow: 1px 2px 2px #797979
+}
+
+.tile{
+  margin-top: 5px;
+  font-size: 12px; 
+  flex-grow: 6;
+  width: 15%;
+  min-height: 22px;
+  border-bottom: 1px #BDBDBD solid;
+  display: inline-block;
+  text-align: center;
+}

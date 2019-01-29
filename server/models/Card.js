@@ -13,7 +13,7 @@ const CardSchema = new Schema(
     },
     position: {
       type: Number,
-      required: true
+      //required: true
     }
     // position: {
     //   type: Schema.Types.ObjectId,
