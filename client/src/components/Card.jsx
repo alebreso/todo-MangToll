@@ -3,14 +3,11 @@ import { DragSource, DropTarget } from 'react-dnd';
 import { findDOMNode } from 'react-dom';
 import flow from 'lodash/flow';
 import { connect } from 'react-redux';
-import { changePosition, deleteCard } from '../actions/CardActions';
+import { changePosition } from '../actions/CardActions';
+
 import '../styles/Card.css';
 
 export class Card extends Component {
-
-  handleDelete = (cardId) => {
-    this.props.deleteCard(cardId)
-  }
   
   render() {
     const { card, isDragging, connectDragSource, connectDropTarget } = this.props;
@@ -21,7 +18,7 @@ export class Card extends Component {
         <button 
           className='card-button'
           type='button'
-          onClick={()=>this.handleDelete(card._id)}
+          onClick={()=>this.props.handleDelete(card._id)}
         >
           X
         </button>
@@ -93,7 +90,8 @@ const mapStateToProps = (store) => ({
   cards: store.cardReducer.cards,
 })
 
-export default (connect(mapStateToProps,{changePosition,deleteCard}))(flow(
+export default (connect(mapStateToProps,{changePosition}))(flow(
+
   DropTarget('CARD', cardTarget, connect => ({
     connectDropTarget: connect.dropTarget()
   })),

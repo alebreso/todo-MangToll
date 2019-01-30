@@ -3,12 +3,17 @@ import update from 'react-addons-update';
 import Card from './Card';
 import { DropTarget } from 'react-dnd';
 import { connect } from 'react-redux';
-import { changePosition } from '../actions/CardActions';
+import { changePosition, deleteCard } from '../actions/CardActions';
 import '../styles/Container.css';
 
 export class Container extends Component {
   state={
     cards: this.props.cardsList
+  }
+
+  handleDelete = (cardId) => {
+    this.props.deleteCard(cardId);
+    this.removeCard(cardId)
   }
 
   pushCard = (card) => {
@@ -60,6 +65,7 @@ export class Container extends Component {
                 card={card}
                 removeCard={this.removeCard}
                 moveCard={this.moveCard}
+                handleDelete={this.handleDelete}
               />
             )
           })
@@ -84,7 +90,7 @@ const mapStateToProps = (store) => ({
   cards: store.cardReducer.cards,
 })
 
-export default (connect(mapStateToProps,{changePosition,})
+export default (connect(mapStateToProps,{changePosition,deleteCard})
 )(DropTarget('CARD', cardTarget,(connect,monitor)=>({
   connectDropTarget: connect.dropTarget(),
   isOver: monitor.isOver(),

@@ -10,14 +10,15 @@ import AddCardForm from './components/AddCardForm';
 
 class App extends Component {
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.getCards();
   }
 
   render() {
 
     const checkPosition = (colId) => {
-      return (this.props.cards.filter(c=> parseInt(c.position) === parseInt(colId)))
+      const cardsList = this.props.cards.filter(c=> parseInt(c.position) === parseInt(colId))
+      return cardsList
     }
 
     if(!this.props.cards) return 'Loading';

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addCard, getCards } from '../actions/CardActions';
+import { addCard } from '../actions/CardActions';
 import '../styles/AddCardForm.css'
 
 class AddCardForm extends Component {
@@ -23,11 +23,6 @@ class AddCardForm extends Component {
       text: '',
       position: 0
     })
-    //this.renderCards();
-  }
-
-  renderCards() {
-    this.props.getCards();
   }
 
   handleChange = (e) => {
@@ -68,7 +63,6 @@ class AddCardForm extends Component {
             value={this.state.text}
             required
           />
-        </form>
         <button
           type='submit'
           onClick={this.handleSubmit}
@@ -76,6 +70,7 @@ class AddCardForm extends Component {
         >
           Add Project +
         </button>
+        </form>
       </div>
     )
   }
@@ -85,4 +80,4 @@ const mapStateToProps = (state) => ({
   cards: state.cardReducer.cards
 })
 
-export default connect(mapStateToProps,{addCard,getCards})(AddCardForm)
+export default connect(mapStateToProps,{addCard})(AddCardForm)

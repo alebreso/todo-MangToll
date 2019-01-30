@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { GET_CARDS, CHANGE_POSITION, ADD_CARD, DELETE_CARD } from '../actions/types';
+import { baseURL } from '../util/const';
 
 export const getCards = () => dispatch => {
   axios
-    .get('http://localhost:4000/')
+    .get(`${baseURL}/`)
     .then(res => 
       dispatch({
         type: GET_CARDS,
@@ -14,7 +15,7 @@ export const getCards = () => dispatch => {
 
 export const changePosition = (cardId, newIndexPosition) => dispatch => {
   axios
-    .put(`http://localhost:4000/card/${cardId}/position/${newIndexPosition}`)
+    .put(`${baseURL}/card/${cardId}/position/${newIndexPosition}`)
     .then(res => dispatch({
       type: CHANGE_POSITION,
       payload: res.data
@@ -24,7 +25,7 @@ export const changePosition = (cardId, newIndexPosition) => dispatch => {
 
 export const addCard = (newCard) => dispatch => {
   axios
-    .post('http://localhost:4000/',newCard)
+    .post(`${baseURL}/`,newCard)
     .then(res => dispatch({
       type: ADD_CARD,
       payload: res.data
@@ -34,7 +35,7 @@ export const addCard = (newCard) => dispatch => {
 
 export const deleteCard = (id) => dispatch => {
   axios
-    .delete(`http://localhost:4000/${id}`)
+    .delete(`${baseURL}/${id}`)
     .then(res => dispatch({
       type: DELETE_CARD,
       payload: res.data
