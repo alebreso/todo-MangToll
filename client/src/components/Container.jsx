@@ -12,8 +12,18 @@ export class Container extends Component {
   }
 
   handleDelete = (cardId) => {
+    const index = this.state.cards.map((c,i) => {
+      if(c._id===cardId) {
+        return i
+      }else return 0
+    })
+    if(index.length>1){
+      index.forEach(test => {
+        if(test !== 0) 
+        this.removeCard(test)
+      })
+    }else this.removeCard(index)
     this.props.deleteCard(cardId);
-    this.removeCard(cardId)
   }
 
   pushCard = (card) => {
@@ -48,7 +58,6 @@ export class Container extends Component {
   }
 
   render() {
-
     const { cards } = this.state;
     const { canDrop, isOver, connectDropTarget} = this.props;
     const isActive = canDrop && isOver ;

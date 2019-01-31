@@ -15,6 +15,7 @@ export class Card extends Component {
 
     return connectDragSource(connectDropTarget(
       <div className='card' style={{opacity}}>
+        <div className='card-title'>{card.title}</div>
         <button 
           className='card-button'
           type='button'
@@ -22,7 +23,6 @@ export class Card extends Component {
         >
           X
         </button>
-        <div className='card-title'>{card.title}</div>
         <div className='card-text'>{card.text}</div>
       </div>
     ))

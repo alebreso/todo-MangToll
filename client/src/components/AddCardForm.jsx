@@ -76,8 +76,8 @@ class AddCardForm extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  cards: state.cardReducer.cards
+const mapStateToProps = (store) => ({
+  cards: store.cardReducer.cards,
 })
 
 export default connect(mapStateToProps,{addCard})(AddCardForm)
