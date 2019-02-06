@@ -44,29 +44,31 @@
   margin-top: .5rem;
   cursor: move;
   border-radius: 5%;
-  background-color: #5ece7e;
   box-shadow: 2px 2px 1px rgba(101, 100, 100, 0.379);
   position: relative;
+  background-color: #5ece7e;
+
 }
 
 .card-title {
   color:white;
   display: inline-flex;
-  width:80%;
-  font-weight: bold;
-  font-size: 1rem;
-  padding: 5px 0 5px 10px;
+  padding: 3px 0 3px 10px;
   vertical-align: middle;
-  text-align: center;
-
+  width:60%;
+    /* font-weight: bold;
+  font-size: 1rem;
+  text-align: center; */
 }
 
 .card-text{
+  margin-bottom: 3px;
   border: 1px solid #e1e1e1;
   background-color: white;
   display: block;
   width: 100%;
   border-radius: 0 0 5px 5px;
+  padding: 2px 0 2px 0;
 }
 
 .card-button {
@@ -74,8 +76,11 @@
   background-color: red;
   border: 0;
   cursor: pointer;
-  width: 15px;
-  height: 15px;
+  width: 2em;
+  height: 2em;
   padding: 1px 0px 1px 0px;
   border-radius: 20%;
+  position: absolute;
+  top:0px;
+  right:0px;
 } 

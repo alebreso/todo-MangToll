@@ -6,12 +6,12 @@ export default class NavBar extends Component {
     return (
       <div className="navbar">
         <div className="tile-container">
-          <div className="tile">FLOWCHART</div>
-          <div className="tile">WIREFRAME</div>  
-          <div className="tile">PROTOTYPE</div>  
-          <div className="tile">DEVELOPMENT</div>  
-          <div className="tile">TEST</div>        
-          <div className="tile">LAUNCH</div>        
+          <div className="tile">MONDAY</div>
+          <div className="tile">TUESDAY</div>  
+          <div className="tile">WEDNESDAY</div>  
+          <div className="tile">THURSDAY</div>  
+          <div className="tile">FRIDAY</div>        
+          <div className="tile">SATURDAY</div>        
         </div>
       </div>
     )

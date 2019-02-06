@@ -46,19 +46,19 @@ class AddCardForm extends Component {
             required
           />
           <select onChange={this.handleChange} name='position'>
-            <option key='position-0' value={0}>flowchart</option>
-            <option key='position-1' value={1}>wireframe</option>
-            <option key='position-2' value={2}>prototype</option>
-            <option key='position-3' value={3}>development</option>
-            <option key='position-4' value={4}>test</option>
-            <option key='position-5' value={5}>launch</option>
+            <option key='position-0' value={0} defaultValue>monday</option>
+            <option key='position-1' value={1}>tuesday</option>
+            <option key='position-2' value={2}>wednesday</option>
+            <option key='position-3' value={3}>thursday</option>
+            <option key='position-4' value={4}>friday</option>
+            <option key='position-5' value={5}>saturday</option>
           </select>
           <textarea
             id='text'
             name='text'
             rows='4'
             cols='18'
-            placeholder='Project description'
+            placeholder='What to do?!'
             onChange={this.handleChange}
             value={this.state.text}
             required
