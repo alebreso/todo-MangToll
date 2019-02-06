@@ -1,6 +1,6 @@
 # todo-MangToll<br>
 small week planner using react-react-dnd-redux-mongoDB<br>
-dont get plans on sundays!!! ;)<br>
+PS:Don't get plans on Sundays!!! ;)<br>
 
 ## installation
 1 - clone the repo <br>
@@ -16,11 +16,9 @@ dont get plans on sundays!!! ;)<br>
 ## Description
 Week Planner based on 6 working days (sunday is OFF!!!😜) <br>
 user can:<br>
--create a card <br>
+- create a card <br><br>
 ![create](https://user-images.githubusercontent.com/42464722/52354620-0c526000-2a31-11e9-839e-034345e1366f.gif)
--move a card from a day to another<br>
+- move a card from a day to another<br><br>
 ![dnd](https://user-images.githubusercontent.com/42464722/52354285-6acb0e80-2a30-11e9-935f-5814a4d308fb.gif)
--delete a card<br>
+- delete a card<br><br>
 ![delete](https://user-images.githubusercontent.com/42464722/52354071-090aa480-2a30-11e9-9239-7989321900e5.gif)
-
-
